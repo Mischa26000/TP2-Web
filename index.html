@@ -1,22 +1,262 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <title>Sommaire TP</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sommaire des Travaux Pratiques</title>
+
+  <!-- Polices haut de gamme -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --violet-deep:   #2e1a47;       /* Violet nuit très classe */
+      --violet-main:   #6b4e9e;       /* Violet principal élégant */
+      --violet-accent: #9d7cd8;       /* Accent lumineux */
+      --violet-glow:   #c9a8ff;       /* Glow subtil */
+      --black-luxe:    #0a0a0f;
+      --cream-soft:    #f5f0ff;
+      --gray-luxe:     #3a2a5a;
+      --shadow-velvet: 0 14px 48px rgba(0,0,0,0.55);
+      --shadow-glow:   0 0 35px rgba(155, 89, 182, 0.22);
+      --radius-xl:     22px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--black-luxe);
+      color: var(--cream-soft);
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(155,89,182,0.06) 0%, transparent 55%),
+        radial-gradient(circle at 85% 75%, rgba(155,89,182,0.05) 0%, transparent 60%);
+      background-attachment: fixed;
+      line-height: 1.75;
+    }
+
+    header {
+      text-align: center;
+      padding: 130px 20px 90px;
+      position: relative;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--violet-accent), transparent);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 5.4rem;
+      font-weight: 700;
+      color: var(--violet-accent);
+      letter-spacing: 5px;
+      text-shadow: var(--shadow-glow);
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 1.35rem;
+      font-weight: 300;
+      color: #b39ddb;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-top: 1.2rem;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 35px 140px;
+    }
+
+    .card {
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(155,89,182,0.22);
+      border-radius: var(--radius-xl);
+      margin: 45px 0;
+      overflow: hidden;
+      box-shadow: var(--shadow-velvet);
+      transition: all 0.65s cubic-bezier(0.22,1,0.36,1);
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-18px);
+      box-shadow: 0 35px 90px rgba(0,0,0,0.65), 0 0 60px rgba(155,89,182,0.18);
+      border-color: var(--violet-accent);
+    }
+
+    .card-header {
+      background: linear-gradient(135deg, var(--violet-deep), #1c1235);
+      padding: 30px 45px;
+      border-bottom: 1px solid rgba(155,89,182,0.18);
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .card-header span {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: var(--violet-accent);
+      letter-spacing: 2.5px;
+    }
+
+    .card-header .tag {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #d1c4e9;
+      background: rgba(155,89,182,0.12);
+      padding: 7px 16px;
+      border-radius: 40px;
+      border: 1px solid rgba(155,89,182,0.25);
+    }
+
+    .card-content {
+      padding: 45px;
+    }
+
+    .tp-item {
+      margin: 32px 0;
+      padding: 28px;
+      background: rgba(46,26,71,0.35);
+      border-radius: 16px;
+      border-left: 5px solid var(--violet-accent);
+      transition: all 0.45s ease;
+    }
+
+    .tp-item:hover {
+      background: rgba(155,89,182,0.09);
+      transform: translateX(10px);
+    }
+
+    .tp-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #d4c2ff;
+      margin-bottom: 1rem;
+    }
+
+    .tp-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--violet-accent);
+      font-weight: 500;
+      font-size: 1.18rem;
+      text-decoration: none;
+      transition: all 0.4s ease;
+    }
+
+    .tp-link:hover {
+      color: var(--violet-glow);
+      text-shadow: 0 0 25px rgba(201,168,255,0.6);
+    }
+
+    .tp-link::after {
+      content: "↗";
+      font-size: 1.4rem;
+      transition: transform 0.4s ease;
+    }
+
+    .tp-link:hover::after {
+      transform: translate(8px, -8px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 90px 20px 50px;
+      color: #7c6a9e;
+      font-size: 0.98rem;
+      letter-spacing: 1.5px;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 4.2rem; }
+      .card-header span { font-size: 2rem; }
+      .card-content { padding: 35px; }
+    }
+  </style>
 </head>
 <body>
-  <h1>Sommaire TP</h1>
 
-  <h2>TP 1 : Introduction</h2>
-  <p><a href="tp1/index.html">Voir le TP 1</a></p>
+  <header>
+    <h1>Travaux Pratiques</h1>
+    <div class="subtitle">Sommaire des TP – Développement Web</div>
+  </header>
 
-  <h2>TP 3 : HTML & CSS</h2>
-  <p><a href="tp3/index.html">Voir le TP 3</a></p>
+  <div class="container">
 
-  <h2>TP 3.1 : CV en HTML & CSS</h2>
-  <p><a href="tp3/cv.html">Voir le CV</a></p>
+    <div class="card">
+      <div class="card-header">
+        <span>TP 1</span>
+        <div class="tag">Introduction</div>
+      </div>
+      <div class="card-content">
+        <div class="tp-item">
+          <div class="tp-title">Introduction aux fondamentaux du développement web</div>
+          <a href="TP1_Mokni_Maskar-Aouragh.pdf" target="_blank" class="tp-link">
+            Consulter le TP 1
+          </a>
+        </div>
+      </div>
+    </div>
 
-  <h2>TP 4 : Liens HTML</h2>
-  <p><a href="tp4/index.html">Voir le TP 4</a></p>
+    <div class="card">
+      <div class="card-header">
+        <span>TP 3</span>
+        <div class="tag">HTML & CSS</div>
+      </div>
+      <div class="card-content">
+        <div class="tp-item">
+          <div class="tp-title">Maîtrise des bases HTML & CSS</div>
+          <a href="TP2_html-css.html" target="_blank" class="tp-link">
+            Accéder au TP 3
+          </a>
+        </div>
+        <div class="tp-item">
+          <div class="tp-title">Réalisation d’un CV structuré en HTML & CSS</div>
+          <a href="cv_tp3.html" target="_blank" class="tp-link">
+            Voir le CV réalisé
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span>TP 4</span>
+        <div class="tag">Approfondissement</div>
+      </div>
+      <div class="card-content">
+        <div class="tp-item">
+          <div class="tp-title">HTML & CSS avancé – Techniques et mise en page complexe</div>
+          <a href="tp4.html" target="_blank" class="tp-link">
+            Explorer le TP 4
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>Département Informatique • Année universitaire 2025-2026</p>
+  </footer>
+
 </body>
 </html>
